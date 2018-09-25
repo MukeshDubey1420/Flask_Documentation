@@ -106,3 +106,39 @@ if __name__ == "__main__":
 * app.run() is used to run the code.
 
 The above code shows "Hello, World!" as Response on `localhost port 5000`   `http://localhost:5000`in a web browser when run with the `python app.py` command.
+
+
+
+### Back-end Web Framework: Flask (Part-2: Routing & URL Binding)
+
+Web frameworks nowadays use the routing technique to help users to navigate through a web without having to remember application URLs. It is useful to access the desired page directly without having to navigate from the home page.
+
+```
+from flask import Flask
+app = Flask(__name__)
+@app.route('/')
+    def index():
+    return 'This is homepage'
+@app.route('/about')
+     def about():
+     return '<h2> About page </h2>'
+
+if __name__ == "__main__":
+    app.run(debug = True)
+
+```
+
+#### **Route() decorator** can be used to inject additional functionality to one or more functions.
+
+* `app.route(rule, option)` Rule represents the URL binding with the function and option is a list of parameters to be forwarded to the underlying Rule options.
+
+* `@app.route(‘/’)` This is the URL and whenever a client requests it the server will send back the return value i.e. return `‘This is homepage’ `. Now, suppose we want to go to the about page, then we write this `@app.route(‘/about’) `. This returns `return ‘<h2> About page </h2>’ `. We can also put HTML codes in the return statement. `def index():` and `def about():` are functions (basically Views).
+
+* `app.run(host, port, debug, option)` But we just use the `debug` in this example. host defaults to `127.0.0.1 (localhost)` and Sets at port number 8000 by default.
+
+
+* debug defaults to `false`. If set to `true`, provides a `debug information`
+
+* options forwards to underlying Werkzeug server.
+
+* `app.run(debug = True)` when the app is `under development,` it should be restarted manually for each change in the code. **To avoid this inconvenience, we enable the debug mode**. *The server then will reload itself with any changes in code. It’s also useful when there is a bug in the code and helps find errors.*
