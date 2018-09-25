@@ -423,7 +423,7 @@ Template Inheritance uses `{% block %} tag` to **tell the template engine to ove
 
 ```html
 
-<!-- Child Template -->
+<!-- Child Template  1 -->
 {% extends “base.html” %}
 {% block title %} IndexPage {% endblock %}
 {% block head %}
@@ -441,7 +441,7 @@ The `{% extend %}` **must be the first tag in the child templates**. This tag te
 #### Creating another Child template as flaskproject/templates/404.html
 
 ```html
-
+<!-- Child Template  2 -->
 {% extends ‘base.html’ %}
 {% block title %} Page Not Found {% endblock %}
 {% block body %}
@@ -452,3 +452,7 @@ The `{% extend %}` **must be the first tag in the child templates**. This tag te
 
 
 ```
+I’ve also added another child template to the parent template, to show that the layout doesn’t change. This is an error page. So, whenever the user gives an invalid path or web address which does not exist then, 404 Error will pop up. I’ve used an `errorhandler()` function, which is called when an error happens.
+
+
+# Thank you For Reading This .
