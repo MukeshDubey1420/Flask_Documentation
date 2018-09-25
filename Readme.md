@@ -171,3 +171,25 @@ if __name__ == "__main__":
 #### This is a dynamic URL example
 
 * `@app.route('/user/<name>)` This here suggests the variable part <name> , it takes in any variable name and displays it later. **If ‘teacher’ is supplied to def hello_user(name): function as argument. The hello_user() function checks if an argument received matches ‘teacher’ or not. If it matches, the application is redirected to the hello_teacher() function using url_for(), otherwise to the hello_students() function passing the received argument as guest parameter to it.**
+
+
+## Back-end Web Framework: Flask (Part-3: How to make a simple Login Page using Get and Post)
+
+* `HTTP protocol` is the core basis of data communication in **(WWW) world wide web**. It is *designed to communicate between clients and servers*. It works as a request-respond protocol. HTTP has different methods of data retrieval from specified URL and those methods have been defined in this protocol.
+
+* **GET**: Browser requests server to get data in an unencrypted form stored on that page and send it. **It’s the default method**. *It can be cached and remains in browser history*.
+
+* **POST**: It is **used to send HTML form data to be processed to a specified resource**. *Browser tells the server that it wants to posts some new data to the URL and it is only stored once. Data received by POST method is not cached by server*.
+
+* **PUT**: It replaces all current representations of the target resource with the uploaded content. Similar to Post, it might trigger the store procedure multiple times by overwriting the old data. It is helpful when suppose your connection is lost during transmission. In this situation a system between the browser and the server might receive the request safely a second time without breaking things.
+
+* **DELETE**: It removes all current representations of the target resource given by a URL.
+
+
+* *By default, a route answers to GET requests only*, but that can be changed by providing the methods argument to the route() decorator. Here I am just going to use here two common HTTP methods: **GET and POST**
+
+**For GET request `request.args.get('nm')` is used .**
+
+**For POST request `request.form[‘nm’]` is used.**
+
+To collect form data we require module: `request`
