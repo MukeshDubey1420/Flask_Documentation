@@ -252,3 +252,77 @@ easy_install jinja2
 * **HTML Escaping**: Jinja 2 has a powerful automatic HTML Escaping, which helps preventing Cross-site Scripting (XSS Attack). **There are special characters like >,<,&, etc. which carry special meanings in the templates**. So, if you want to use them as regular text in your documents then, replace them with entities. Not doing so might lead to XSS-Attack.
 
 * **Template Inheritance**: This is the most important feature, We will study in detail later on.
+
+#### What are Templates?
+Back in the days, servers used to have a collection of files, like HTML files, which were sent over as requested by clients. These were static data being sent over.
+
+Now, in the modern web world, we have less of static data and more of dynamic data being requested from clients and therefore sent by the server. The web totally depends on what the client is asking for, and on which user is signing in and who is logging out. So, Jinja2 templating is being used.
+
+**A template contains variables which are replaced by the values which are passed in when the template is rendered. Variables are helpful with the dynamic data.**
+
+##### Structure of Flask App
+```
+/flaskproject
+   -/app.py
+    /templates
+       -/index.html
+
+```
+The structure of your application helps to keep your code organised and accessible. **Flask expects the templates directory to be in the same folder as the module in which it was created**. *You can specify the location of the `template_folder`. **Remember to keep your templates file in the templates folder**.*
+
+```python
+app = Flask(__name__, template_folder='../pages/templates')
+```
+
+#### Delimiters(Syntaxes)
+```
+{%....%} are for statements(if,else and for loops)
+{{....}} are expressions used to print to template output
+         (to pass python defined variable in html template)
+{#....#} are for comments which are not included in the template output
+#....## are used as line statements
+
+````
+##### Write this file in flaskproject/templates/index.html:
+
+```html
+<!DOCTYPE html>
+<html>
+<p>Hello {{ username }}</p>
+</body>
+</html>
+
+```
+
+This is a very simple HTML file. **Variables are like the placeholders which store dynamic data or values**. These values may be passed or provided as arguments in `render_template() ` call. **Rendering** is a process of filling these placeholders with actual data. As HTML file is rendered, data is sent to a client.
+
+#### Write this file in flaskproject/app.py:
+
+```python
+from flask import Flask, render_template
+app = Flask(__name__, template_folder=’’) # by default set to root directory. if we want to change then we use template_folder() function and pass new location.
+@app.route(‘/user/<username>’)
+def index(username):
+    return render_template(‘index.html’, username=username)
+if __name__ == ‘__main__’:
+ app.run(debug=True)
+
+```
+
+So, now we render HTML by using `render_template()` . The syntax is:
+```python
+flask.render_template(template_name_or_list,**content)
+```
+
+This renders a template from the templates folder with the given content.
+
+* template_name_or_list is the name of the template to be rendered or iterated.
+* ** means it is looking for keyword arguments.
+
+Values can also be passed to the templates via the content dictionary. To print the value of variable, we use a {{ username }} .To access the variable’s attributes, we can either use {{ username.surname}} or {{ username['title'] }}.
+
+
+#### Conditional Statement
+So long we’ve seen only seen one of the many advantages of Jinja 2. **To control the flow of the program, we create a structure which is controlled by conditional statements. {%....%} these are the placeholders from which all the conditions are executed.**
+
+This is the flaskproject/app.py file
