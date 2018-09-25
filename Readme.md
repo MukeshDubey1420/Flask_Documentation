@@ -86,7 +86,7 @@ We can test that our development environment is configured correctly by creating
 
 ### Make Sure don't save this File as `flask.py`. bcz it is predefined-module file . just like we can't use an keyword as an identifier.
 
-```
+```python
 from flask import Flask
 app = Flask(__name__)
 
@@ -115,7 +115,7 @@ The above code shows "Hello, World!" as Response on `localhost port 5000`   `htt
 
 Web frameworks nowadays use the routing technique to help users to navigate through a web without having to remember application URLs. It is useful to access the desired page directly without having to navigate from the home page.
 
-```
+```python
 from flask import Flask
 app = Flask(__name__)
 @app.route('/')
@@ -148,7 +148,7 @@ if __name__ == "__main__":
 
 * There is `url_for` function which is very useful if we want a dynamically build URL.
 
-```
+```python
 from flask import Flask
  app = Flask(__name__)
 @app.route('/teacher')
@@ -188,8 +188,45 @@ if __name__ == "__main__":
 
 * *By default, a route answers to GET requests only*, but that can be changed by providing the methods argument to the route() decorator. Here I am just going to use here two common HTTP methods: **GET and POST**
 
-**For GET request `request.args.get('nm')` is used .**
+**For GET request `request.args.get('username')` is used .**
 
-**For POST request `request.form[‘nm’]` is used.**
+**For POST request `request.form[‘username’]` is used.**
 
+`'username'`  is the name (Value) of the input defined by us in HTML Form Code.
 To collect form data we require module: `request`
+
+```python
+from flask import Flask, redirect, url_for, request
+app = Flask(__name__)
+@app.route('/login',methods = ['POST', 'GET'])
+def login():
+   if request.method == 'POST':
+      user = request.form['username']
+      return redirect(url_for('success',name = user))
+   else:
+      user = request.args.get('username')
+      return redirect(url_for('success',name = user))
+@app.route('/success/<name>')
+def success(name):
+   return 'welcome %s' % name
+if __name__ == '__main__':
+   app.run(debug = True)
+
+```
+
+#### The HTML code inside the `templates` folder is ->
+
+``` HTML
+<html>
+<body>
+<form action = "http://localhost:5000/login" method="post">
+ <p> Enter Name:</p>
+ <p> <input type="text" name="username"></p>
+ <p> <input type="submit" name="submit"></p>
+</form>
+</body>
+</html>
+
+```
+
+* The http://localhost:5000/login is mapped to `login()` function (or we can say View). As the server has received the submitted data by POST method, value of ‘username’ parameter obtained from the form data is by: user = request.form[‘username’] . It is then passed to the /success URL as the variable part /<name> . The browser will display it on the screen.
