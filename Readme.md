@@ -63,6 +63,13 @@ Now, let’s move on. Enter the following command to get Flask activated in your
 `$ pip install Flask`
 A few seconds later and you are good to go.
 
+After you get your dependencies installed and confirm they're doing the trick for you, you'll probably want to keep track of and control what versions of the dependencies you're using. Pip allows us to "freeze" our dependencies, and record which versions we are using in a file that (by convention) is called requirements.txt. Create a requirements file with this command:
+
+pip freeze > requirements.txt
+If later on you wish to install this same set of dependencies again, you can install them from this file with the following command:
+
+pip install -r requirements.txt
+
 ### System-Wide Installation
 This is possible as well, though I do not recommend it. Just run pip with root privileges:
 
