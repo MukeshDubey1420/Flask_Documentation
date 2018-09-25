@@ -1,4 +1,4 @@
-# **Flask Documentation**
+# **Flask - A Python Web Micro-Framewrok :- Documentation**
 
 Flask is a micro web framework written in Python and based on the Werkzeug toolkit and Jinja2 template engine.
 
@@ -34,29 +34,30 @@ Maybe it’s even in your package manager. If you use Ubuntu, try:
 
 `pip install virtualenv` this will install virtual environment. Now our task is to Activate this environment.
 
-Once you have `virtualenv` installed, just fire up a shell and create your own environment. I usually create a project folder and a `venv` folder within:
+Once you have `virtualenv` installed, just fire up a shell and create your own environment.
 
 ```
-$ mkdir myproject
-$ cd myproject
-$ virtualenv venv
-New python executable in venv/bin/python
-Installing setuptools, pip............done.
+# Create a new virtualenv named "myproject" using command.
+$ virtualenv myproject
+New python executable in myproject/bin/python
+Installing setuptools, pip, wheel...done.
 
-```
 Now, whenever you want to work on a project, you only have to activate the corresponding environment
 
-**On OS X and Linux, do the following:**
+# Activate the virtualenv (OS X & Linux)
+$ source myproject/bin/activate
 
-`$ . venv/bin/activate`
+# Activate the virtualenv (Windows)
+$ myproject\Scripts\activate
 
-**If you are a Windows user, the following command is for you:**
-
-`$ venv\Scripts\activate`
 
 And if you want to go back to the real world, use the following command:
 
-`$ deactivate`
+$ deactivate
+
+```
+
+
 Now, let’s move on. Enter the following command to get Flask activated in your virtualenv:
 
 `$ pip install Flask`
