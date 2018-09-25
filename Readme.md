@@ -367,3 +367,88 @@ if __name__ == ‘__main__’:
 
 ```
 So, we use for loop to iterate over the `list_example` and print it with this placeholder `{{ name }}`. To end for loop use `{%endfor%}` and to end if loop, use `{%endif%}`.
+
+
+#### **Template Inheritance**
+Jinja 2 **supports Template Inheritance**, which is one of the most powerful and useful features of any template engine. **It means one template can inherit from another template**.
+
+**Nowadays, websites require the same layout for different pages. Almost every website has a navigation bar attached to its page. To not repeat the code, we use inheritance feature because it saves us a lot of time and also reduces work.**
+
+A **base template or simply layout template** contains the basic layout *which is common to all the other templates*, and it is from this base template we extend or derive the layout for other pages.
+
+#### opening flaskproject/app.py file and write
+
+```python
+
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route(‘/’)
+def index():
+    return render_template(‘index.html’)
+@app.errorhandler(404)  # for handling page_not_found errors.
+def page_not_found(e):
+    return render_template(‘404.html’), 404
+if __name__ == ‘__main__’:
+    app.run(debug=True)
+
+```
+
+#### Creating Basic Layout as base.html in flaskprojectapp/templates/base.html
+
+```html
+<!-- Parent Template -- >
+<!DOCTYPE html>
+<html>
+<head>
+ {% block head %}
+ <title>
+   {% block title %}
+   {% endblock %}
+ </title>
+ {% endblock %}
+</head>
+<body>
+ {% block body %}
+ {% endblock %}
+</body>
+</html>
+
+```
+
+Template Inheritance uses `{% block %} tag` to **tell the template engine to override the common elements of your site via child templates**. `base.html` is the **parent template** which is the basic layout and on which you can modify using the **child templates**, which is used to fill empty blocks with content. base.html is a general layout of the Web page.
+
+##### Writing Child Template in flaskproject/templates/index.html
+
+```html
+
+<!-- Child Template -->
+{% extends “base.html” %}
+{% block title %} IndexPage {% endblock %}
+{% block head %}
+ {{ super() }}
+{% endblock %}
+{% block body %}
+ <h1>Hello World</h1>
+ <p>Welcome to my site.</p>
+{% endblock %}
+
+```
+
+The `{% extend %}` **must be the first tag in the child templates**. This tag tells the template engine that *this template extends from the parent template or ( base.html )*. `{% extend %}` *represents the inheritance characteristic of Jinja 2*. So now the {% extend "base.html"%} first searches for the template mentioned and then the child template index.html overrides it with a different data.
+
+#### Creating another Child template as flaskproject/templates/404.html
+
+```html
+
+{% extends ‘base.html’ %}
+{% block title %} Page Not Found {% endblock %}
+{% block body %}
+ <h1>404 Error :(</h1>
+ <p>What you were looking for is just not there.<p>
+ <a href="{{ url_for(‘index’) }}">go to homepage</a>
+{% endblock %}
+
+
+```
