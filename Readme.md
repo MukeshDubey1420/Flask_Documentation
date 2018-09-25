@@ -76,10 +76,10 @@ This is possible as well, though I do not recommend it. Just run pip with root p
 `$ sudo pip install Flask`
 (On Windows systems, run it in a command-prompt window with administrator privileges, and leave out sudo.)
 
-
+### Why is Flask a good web framework choice?
+Flask is considered more Pythonic than the `Django web framework` because in common situations the equivalent Flask web application is more explicit. Flask is also easy to get started with **as a beginner because there is little boilerplate code for getting a simple app up and running.**
 
 ### Create a simple Flask application
-
 We can test that our development environment is configured correctly by creating a simple Flask application. We’ll grab the nine-line example from Flask’s homepage and drop it in a new file called `app.py`.
 
 ### Make Sure don't save this File as `flask.py`. bcz it is predefined-module file . just like we can't use an keyword as an identifier.
@@ -105,4 +105,4 @@ if __name__ == "__main__":
 
 * app.run() is used to run the code.
 
-We can then try running our new Flask application with the command python app.py. You can then open `http://localhost:5000` in your browser and you should see the `“Hello World!”` response.
+The above code shows "Hello, World!" as Response on `localhost port 5000`   `http://localhost:5000`in a web browser when run with the `python app.py` command.
