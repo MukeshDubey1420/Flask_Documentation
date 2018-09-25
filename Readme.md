@@ -76,6 +76,8 @@ This is possible as well, though I do not recommend it. Just run pip with root p
 `$ sudo pip install Flask`
 (On Windows systems, run it in a command-prompt window with administrator privileges, and leave out sudo.)
 
+## Back-end Web Framework: Flask (Part-1: Beginning )
+
 ### Why is Flask a good web framework choice?
 Flask is considered more Pythonic than the `Django web framework` because in common situations the equivalent Flask web application is more explicit. Flask is also easy to get started with **as a beginner because there is little boilerplate code for getting a simple app up and running.**
 
@@ -109,7 +111,7 @@ The above code shows "Hello, World!" as Response on `localhost port 5000`   `htt
 
 
 
-### Back-end Web Framework: Flask (Part-2: Routing & URL Binding)
+## Back-end Web Framework: Flask (Part-2: Routing & URL Binding)
 
 Web frameworks nowadays use the routing technique to help users to navigate through a web without having to remember application URLs. It is useful to access the desired page directly without having to navigate from the home page.
 
@@ -142,3 +144,30 @@ if __name__ == "__main__":
 * options forwards to underlying Werkzeug server.
 
 * `app.run(debug = True)` when the app is `under development,` it should be restarted manually for each change in the code. **To avoid this inconvenience, we enable the debug mode**. *The server then will reload itself with any changes in code. It’s also useful when there is a bug in the code and helps find errors.*
+
+
+* There is `url_for` function which is very useful if we want a dynamically build URL.
+
+```
+from flask import Flask
+ app = Flask(__name__)
+@app.route('/teacher')
+     def hello_teacher():
+     return 'Hey Teacher'
+@app.route('/students/<student>')
+     def hello_students(student):
+     return 'Hello %s as student' %student
+@app.route('/user/<name>')
+     def hello_user(name):
+         if name == 'teacher':
+              return redirect(url_for('hello_teacher'))
+         else:
+              return redirect(url_for('hello_students'))
+if __name__ == "__main__":
+     app.run(debug = True)
+
+```
+
+#### This is a dynamic URL example
+
+* `@app.route('/user/<name>)` This here suggests the variable part <name> , it takes in any variable name and displays it later. **If ‘teacher’ is supplied to def hello_user(name): function as argument. The hello_user() function checks if an argument received matches ‘teacher’ or not. If it matches, the application is redirected to the hello_teacher() function using url_for(), otherwise to the hello_students() function passing the received argument as guest parameter to it.**
