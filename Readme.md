@@ -326,3 +326,44 @@ Values can also be passed to the templates via the content dictionary. To print 
 So long we’ve seen only seen one of the many advantages of Jinja 2. **To control the flow of the program, we create a structure which is controlled by conditional statements. {%....%} these are the placeholders from which all the conditions are executed.**
 
 This is the flaskproject/app.py file
+
+```python
+from flask import Flask, render_template
+
+app = Flask(__name__)
+@app.route(‘/’)
+def index():
+ list_example = [‘Mukesh’, ‘MukeshDubey’, ‘Mukul’]
+ return render_template(‘index.html’, list_example=list_example)
+
+if __name__ == ‘__main__’:
+ app.run(debug=True)
+
+ ```
+
+##### Next is the HTML file stored in flaskproject/templates/index.html:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+ <title>Conditions Demonstration</title>
+</head>
+<body>
+<ul>
+ {% for name in list_example %}
+ <li>{{ name }}</li>
+ {% endfor %}
+ </ul>
+
+ <ol>
+ {% for name in list_example %}
+ <li>{{ name }}</li>
+ {% endfor %}
+ </ol>
+
+</body>
+</html>
+
+```
+So, we use for loop to iterate over the `list_example` and print it with this placeholder `{{ name }}`. To end for loop use `{%endfor%}` and to end if loop, use `{%endif%}`.
