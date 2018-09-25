@@ -6,10 +6,10 @@ app = Flask(__name__)
 def index():
     return render_template('05-Home.html')
 
+
 @app.route('/puppy/<name>')
 def pup_name(name):
     return render_template('05-Puppy.html',name=name)
-
 
 
 if __name__ == '__main__':
