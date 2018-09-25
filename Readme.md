@@ -75,3 +75,34 @@ This is possible as well, though I do not recommend it. Just run pip with root p
 
 `$ sudo pip install Flask`
 (On Windows systems, run it in a command-prompt window with administrator privileges, and leave out sudo.)
+
+
+
+### Create a simple Flask application
+
+We can test that our development environment is configured correctly by creating a simple Flask application. We’ll grab the nine-line example from Flask’s homepage and drop it in a new file called `app.py`.
+
+### Make Sure don't save this File as `flask.py`. bcz it is predefined-module file . just like we can't use an keyword as an identifier.
+
+```
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+
+if __name__ == "__main__":
+    app.run()
+
+```
+
+* We import the **flask** dependency. **Remember to use a capital Flask** while importing.
+
+* We create the `app` object as an instance of class Flask imported from the flask package. The `__name__` variable passed to the Flask class is a Python predefined variable, **which is set to the name of the module in which it is used. It is helpful when we want to find other static files such as HTML, CSS files.**
+
+* **__name__ == "__main__"** is required for a quick check so as **to make sure that we only start the web server or web app when this piece of code is called directly.**
+
+* app.run() is used to run the code.
+
+We can then try running our new Flask application with the command python app.py. You can then open `http://localhost:5000` in your browser and you should see the `“Hello World!”` response.
