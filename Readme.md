@@ -230,3 +230,25 @@ if __name__ == '__main__':
 ```
 
 * The http://localhost:5000/login is mapped to `login()` function (or we can say View). As the server has received the submitted data by POST method, value of ‘username’ parameter obtained from the form data is by: user = request.form[‘username’] . It is then passed to the /success URL as the variable part /<name> . The browser will display it on the screen.
+
+
+## Back-end Web Framework: (Flask Part 4: Jinja2 Explanation in Detail)
+
+#### What is Jinja 2?
+
+* Jinja2 is **a modern day templating language for Python developers**. It was made after Django’s template. It is used to create HTML, XML or other markup formats that are returned to the user via an HTTP request. You can read more [here...](https://en.wikipedia.org/wiki/Jinja_%28template_engine%29)
+
+#### Installation : How To Get Jinja 2
+
+```
+pip install jinja2
+easy_install jinja2
+```
+
+### Why do we need Jinja 2?
+
+* **Sandboxed Execution**: It provides a protected framework for automation of testing programs, whose behaviour is unknown and must be investigated.
+
+* **HTML Escaping**: Jinja 2 has a powerful automatic HTML Escaping, which helps preventing Cross-site Scripting (XSS Attack). **There are special characters like >,<,&, etc. which carry special meanings in the templates**. So, if you want to use them as regular text in your documents then, replace them with entities. Not doing so might lead to XSS-Attack.
+
+* **Template Inheritance**: This is the most important feature, We will study in detail later on.
