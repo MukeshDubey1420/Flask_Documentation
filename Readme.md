@@ -53,3 +53,17 @@ Now, whenever you want to work on a project, you only have to activate the corre
 **If you are a Windows user, the following command is for you:**
 
 `$ venv\Scripts\activate`
+
+And if you want to go back to the real world, use the following command:
+
+`$ deactivate`
+Now, let’s move on. Enter the following command to get Flask activated in your virtualenv:
+
+`$ pip install Flask`
+A few seconds later and you are good to go.
+
+### System-Wide Installation
+This is possible as well, though I do not recommend it. Just run pip with root privileges:
+
+`$ sudo pip install Flask`
+(On Windows systems, run it in a command-prompt window with administrator privileges, and leave out sudo.)
