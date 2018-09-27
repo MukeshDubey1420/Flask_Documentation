@@ -22,6 +22,66 @@ At its core, the main purpose of Python virtual environments is to create an iso
 
 `pip install -r requirements.txt` to install the dependencies.
 
+## Creating an environment using Conda commands
+
+* Use the **Terminal** or an **Anaconda Prompt** for the following steps.
+
+##### To create an environment:
+
+```
+conda create --my_flask_env flask
+
+```
+* When **conda** asks you to proceed, **type y**:
+
+* **proceed ([y]/n)?**
+
+* This creates the flask environment in /envs/. This environment uses the same version of Python that you are currently using, because you did not specify a version.
+
+* To create an environment with a specific version of Python:
+
+```
+conda create -n venv python=3.4
+```
+#### Activating an environment
+* To activate an environment:
+
+* **On Windows, in your Anaconda Prompt, `run activate my_flask_env`**
+
+* **On macOS and Linux, in your Terminal Window, `run source activate my_flask_env`**
+
+#### Deactivating an environment
+* To deactivate an environment:
+
+* **On Windows, in your Anaconda Prompt, run deactivate**
+* **On macOS and Linux, in your Terminal Window, run source deactivate**
+
+
+### Viewing a list of your environments
+* To see a list of all of your environments, in your Terminal window or an Anaconda Prompt, run:
+
+```
+conda info --envs
+
+```
+
+OR
+
+```
+conda env list
+```
+
+#### Viewing a list of the packages in an environment
+* If the environment is not activated, in your Terminal window or an Anaconda Prompt, run:
+
+`conda list -n myenv`
+
+* If the environment is activated, in your Terminal window or an Anaconda Prompt, run:
+
+`conda list`
+
+## Creating an environment using pip commands
+
 **If you are on Mac OS X or Linux, chances are that the following command will work for you:**
 
 `$ sudo pip install virtualenv`
@@ -455,4 +515,4 @@ The `{% extend %}` **must be the first tag in the child templates**. This tag te
 I’ve also added another child template to the parent template, to show that the layout doesn’t change. This is an error page. So, whenever the user gives an invalid path or web address which does not exist then, 404 Error will pop up. I’ve used an `errorhandler()` function, which is called when an error happens.
 
 
-# Thank you For Reading This .
+# Thank you For Reading This . i will be back with DataBase Connectivity .
