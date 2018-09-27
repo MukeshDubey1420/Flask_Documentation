@@ -1,7 +1,7 @@
 import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy      # pip install Flask-SQLAlchemy
-from flask_migrate import Migrate               # pip install Flask-Migrate
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 ######################################
 #### SET UP OUR SQLite DATABASE #####
 ####################################
@@ -20,7 +20,7 @@ Migrate(app,db)
 
 class User(db.Model):
 
-    __tablename__ = 'users'   # Creates the table name as users.
+    __tablename__ = 'users'
 
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.Text)
@@ -29,8 +29,8 @@ class User(db.Model):
     projects = db.relationship('Project',backref='user',lazy='dynamic')
     # This is a one-to-one relationship
     # A user only has one Supervisor, thus uselist is False.
-    supervisor = db.relationship('Supervisor',backref='user',uselist=False)     #in backref we have to pass user class all in smallcase letters.
-                                                                                # uselist=False sets one to many relation false.
+    supervisor = db.relationship('Supervisor',backref='user',uselist=False)
+
     def __init__(self,name):
         self.name = name
 
