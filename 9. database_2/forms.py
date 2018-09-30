@@ -11,5 +11,5 @@ class AddForm(FlaskForm):
 
 class DelForm(FlaskForm):
 
-    id = IntegerField('Id Number of User to Remove:')
+    id = IntegerField('Id of User to Remove:')
     submit = SubmitField('Remove User')

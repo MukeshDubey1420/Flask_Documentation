@@ -41,7 +41,7 @@ conda create --my_flask_env flask
 * To create an environment with a specific version of Python:
 
 ```
-conda create -n venv python=3.4
+conda create -n venv python=3.7
 ```
 #### Activating an environment
 * To activate an environment:
