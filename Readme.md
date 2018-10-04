@@ -1,4 +1,4 @@
-# **Flask - A Python Web Micro-Framewrok :- Documentation**
+﻿# **Flask - A Python Web Micro-Framewrok :- Documentation**
 
 Flask is a micro web framework written in Python and based on the Werkzeug toolkit and Jinja2 template engine.
 
@@ -515,4 +515,4 @@ The `{% extend %}` **must be the first tag in the child templates**. This tag te
 I’ve also added another child template to the parent template, to show that the layout doesn’t change. This is an error page. So, whenever the user gives an invalid path or web address which does not exist then, 404 Error will pop up. I’ve used an `errorhandler()` function, which is called when an error happens.
 
 
-# Thank you For Reading This . i will be back with DataBase Connectivity .
+# Thank you For Reading This . soon i will be back with DataBase Connectivity .
